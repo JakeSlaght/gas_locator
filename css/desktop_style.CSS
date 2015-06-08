@@ -2,8 +2,15 @@
 Generic Styling, for Desktops/Laptops 
 */
 
-h1{width: 100%;
-background-color: #99AD99;}
+h1{
+width: 100%;
+background-color: #99AD99;
+}
+#errors
+{
+width: 100%;
+color: red;
+}
 table { 
   width: 100%; 
   border-collapse: collapse; 
