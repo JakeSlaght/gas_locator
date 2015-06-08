@@ -1,4 +1,38 @@
 /* 
+Generic Styling, for Desktops/Laptops 
+*/
+
+h1{
+width: 100%;
+background-color: #99AD99;
+}
+div#errors
+{
+width: 100%;
+color: FF0000;
+font-weight: bold;
+font-size: 25px;
+}
+div#outcome table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+div#outcome tr:nth-of-type(odd) { 
+  background: #D6DED6; 
+}
+div#outcome th { 
+  background: #99AD99; 
+  color: white; 
+  font-weight: bold; 
+}
+div#outcome td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+
+/* 
 Max width before this PARTICULAR table gets nasty
 This query will take effect for any screen smaller than 760px
 and also iPads specifically.
@@ -25,7 +59,7 @@ only screen and (max-width: 760px),
 		/* Behave  like a "row" */
 		border: none;
 		border-bottom: 1px solid #eee; 
-		position: relative;
+		position	: relative;
 		padding-left: 50%; 
 	}
 	

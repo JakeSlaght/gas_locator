@@ -1,12 +1,12 @@
 <html>
 <head>
-
+<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" \>
 <?php
 //the headers below are used to auto-cache the page for loading purposes.
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 
-include 'mobile.php'; //This will check if the system is a mobile device or not
+//include 'mobile.php'; //This will check if the system is a mobile device or not
 
 $streetErr = "";
 $cityErr="";
@@ -39,14 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	{
 		$city=($_POST["city"]);
 	}
-		if (empty($_POST["radius"])) {
-     $radiusErr = "A Radius is required";
-	 $errors_exist=true;
-	}
-	else
-	{
-		$radius=($_POST["radius"]);
-	}
 	 if (empty($_POST["state"])) {
      $stateErr = "A State is required";
 	 $errors_exist=true;
@@ -62,6 +54,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	{
 		$zipcode=($_POST["zipcode"]);
 	}
+		if (empty($_POST["radius"])) {
+			$radius=1;
+		}
+		else
+		{
+			$radius=($_POST["radius"]);
+		}
+	
 	}
 
 ?>
@@ -70,10 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <h1>Gas Station Locator</h1>
 <span class="form-body">
-<span class="errors">
+<div id="errors">
 <?php
  if($errors_exist) {
-		
 	 echo $streetErr ." , ". $cityErr ." , ". $stateErr ." , ". $zipcodeErr;
  }
  else
@@ -82,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  }
 
 ?>
-</span>
+</div>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <table>
@@ -95,12 +94,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<tr><td><input type="submit"></td></tr>
 </table></form>
 </span>
-<span class="outcome">
+<div id="outcome">
 <?php
     if(isset($_POST["checkGas"]))
     {
 			$address= $street." ".$city.",".$state." ".$zipcode;
-
 			include 'gas_station_findme.php';
 	}
 ?></span>
